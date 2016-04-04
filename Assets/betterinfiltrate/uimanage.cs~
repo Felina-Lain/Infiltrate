@@ -1,0 +1,33 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+public class uimanage : MonoBehaviour {
+	
+	public Text uI;
+	public float chrono;
+
+	// Use this for initialization
+	void Start () {
+		uI.text = "Move with arrows. Activate lightswitchs with space.";
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		chrono -= Time.deltaTime;
+
+		if (chrono <= 3){
+			uI.text = "Pick up the key and get to the vent to win.";
+		}
+		if (chrono <= 0){
+			uI.text = " ";
+			this.GetComponent<uimanage>().enabled = false;
+		}
+
+
+	}
+
+
+}

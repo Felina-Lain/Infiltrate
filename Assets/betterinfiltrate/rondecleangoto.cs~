@@ -1,0 +1,41 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class rondecleangoto : MonoBehaviour {
+
+    public Transform mark1;
+    public Transform mark2;
+    public int markcount;
+    public int speed;
+	private NavMeshAgent agent;
+
+    // Use this for initialization
+    void Start () {
+		markcount = 1;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+        if (markcount  == 2)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            agent.SetDestination(mark1.position);
+           }
+        if (markcount == 1)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            agent.SetDestination(mark2.position);
+           }
+    }
+
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Mark1") {
+			markcount = 1;
+		}
+		if (other.tag == "Mark2") {
+			markcount = 2;
+		}
+
+	}
+}
